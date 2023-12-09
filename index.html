@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weryfikacja</title>
+    <!-- Include SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #1e1e1e, #383838, #1e1e1e, #383838);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .verification-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #FF4E50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.3em;
+            color: #7F8C8D;
+            margin-bottom: 20px;
+        }
+
+        .math-problem {
+            font-size: 3em;
+            margin: 30px 0;
+            color: #333;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        input {
+            padding: 15px;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 1.5em;
+            border: 2px solid #3498db;
+            border-radius: 12px;
+            outline: none;
+            color: #333;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input:focus {
+            border-color: #FF4E50;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="verification-container">
+        <h2>Weryfikacja</h2>
+        <p>Proszę rozwiąż poniższe zadanie matematyczne:</p>
+        
+        <!-- Generate a random math problem using JavaScript -->
+        <script>
+            var num1 = Math.floor(Math.random() * 10) + 1;
+            var num2 = Math.floor(Math.random() * 10) + 1;
+            var answer = num1 + num2;
+
+            document.write('<p class="math-problem">' + num1 + ' + ' + num2 + ' = ?</p>');
+        </script>
+        
+        <input type="text" id="userAnswer" placeholder="Wprowadź odpowiedź">
+
+        <button onclick="verifyAnswer()">Wyślij</button>
+    </div>
+
+    <div class="footer">
+        <p>Stworzone z pasją</p>
+    </div>
+
+    <!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        function verifyAnswer() {
+            var userAnswer = document.getElementById('userAnswer').value;
+            
+            // Check if the user's answer is correct
+            if (userAnswer == answer) {
+                // Stylish success popup
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Weryfikacja udana!',
+                    text: 'Jesteś człowiekiem!',
+                    confirmButtonColor: '#3498db',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirect to index2.html or perform other actions
+                        window.location.href = 'index2.html';
+                    }
+                });
+            } else {
+                // Stylish error popup
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Weryfikacja nieudana',
+                    text: 'Spróbuj ponownie.',
+                    confirmButtonColor: '#3498db',
+                });
+            }
+        }
+    </script>
+</body>
+</html>

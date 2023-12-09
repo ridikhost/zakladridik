@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usługi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #495057;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #343a40;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            width: calc(33.333% - 20px);
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #fff;
+            outline: none;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            background-color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nasze Usługi</h1>
+
+    <ul id="services-list">
+        <button data-description="Przygotowanie terenu pod budowę">Przygotowanie terenu pod budowę</button>
+        <button data-description="Roboty budowlane związane ze wznoszeniem budynków mieszkalnych i niemieszkalnych">Roboty budowlane związane ze wznoszeniem budynków mieszkalnych i niemieszkalnych</button>
+        <button data-description="Rozbiórka i burzenie obiektów budowlanych">Rozbiórka i burzenie obiektów budowlanych</button>
+        <button data-description="Wykonywanie instalacji elektrycznych">Wykonywanie instalacji elektrycznych</button>
+        <button data-description="Wykonywanie instalacji wodno-kanalizacyjnych, cieplnych, gazowych i klimatyzacyjnych">Wykonywanie instalacji wodno-kanalizacyjnych, cieplnych, gazowych i klimatyzacyjnych</button>
+        <!-- Add more buttons with data-description attributes for other services -->
+    </ul>
+
+    <a href="index.html">Powrót>></a>
+
+    <script>
+        document.getElementById('services-list').addEventListener('click', function(event) {
+            if (event.target.tagName === 'BUTTON') {
+                showServiceDescription(event.target.getAttribute('data-description'));
+            }
+        });
+
+        function showServiceDescription(description) {
+            Swal.fire({
+                title: 'Opis Usługi',
+                text: description,
+                icon: 'info',
+                confirmButtonColor: '#007bff',
+                background: '#f8f9fa',
+                textConfirm: 'Zamknij'
+            });
+        }
+    </script>
+</body>
+</html>
